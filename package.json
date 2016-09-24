@@ -1,0 +1,51 @@
+{
+  "name": "vue-webpack-spa",
+  "version": "0.0.1",
+  "description": "A single page application using Vue, Webpack, ES6, Stylus and so on.",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production node ./server.js",
+    "dev": "webpack-dev-server --hot --progress --colors --display-error-details",
+    "build": "webpack --config ./webpack.production.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangchi/vue-webpack-spa.git"
+  },
+  "keywords": [
+    "Vue",
+    "Webpack",
+    "SPA"
+  ],
+  "author": "Wang Chi <hiwangchi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangchi/vue-webpack-spa/issues"
+  },
+  "homepage": "https://github.com/wangchi/vue-webpack-spa#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-runtime": "^6.11.6",
+    "css-loader": "^0.25.0",
+    "vue": "^1.0.27",
+    "vue-hot-reload-api": "^1.3.3",
+    "vue-html-loader": "^1.2.3",
+    "vue-loader": "^8.5.2",
+    "vue-style-loader": "^1.0.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ]
+  }
+}
