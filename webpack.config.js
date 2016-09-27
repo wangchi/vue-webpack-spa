@@ -26,5 +26,8 @@ module.exports = {
         js: 'babel'
       }
     }
+  },
+  resolve: {
+    extensions: ['', '.js', '.vue']
   }
 };
