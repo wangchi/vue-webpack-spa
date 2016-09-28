@@ -1,14 +1,11 @@
 <template lang="html">
-  <site-header></site-header>
-  <div class="message">
-    {{ msg }}
-  </div>
-  <site-footer></site-footer>
+  <home></home>
 </template>
 
 <script>
-  import SiteHeader from '../components/SiteHeader';
-  import SiteFooter from '../components/SiteFooter';
+  // import SiteHeader from '../components/SiteHeader';
+  // import SiteFooter from '../components/SiteFooter';
+  import Home from './Home';
   export default {
     data: function () {
       return {
@@ -16,8 +13,7 @@
       }
     },
     components: {
-      SiteHeader,
-      SiteFooter
+      Home
     }
   }
 </script>
