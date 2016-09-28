@@ -1,7 +1,9 @@
 <template lang="html">
   <site-header></site-header>
   <div class="content">
-    {{ msg }}
+    <div class="placeholder">Home Content1</div>
+    <div class="placeholder">Home Content2</div>
+    <div class="placeholder">Home Content3</div>
   </div>
   <site-footer></site-footer>
 </template>
