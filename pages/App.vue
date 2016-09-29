@@ -1,21 +1,23 @@
 <template lang="html">
-  <home></home>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
   // import SiteHeader from '../components/SiteHeader';
   // import SiteFooter from '../components/SiteFooter';
-  import Home from './Home';
-  export default {
-    data: function () {
-      return {
-        msg: 'Hello from vue-loader'
-      }
-    },
-    components: {
-      Home
-    }
-  }
+  // import Home from './Home';
+  // export default {
+  //   data: function () {
+  //     return {
+  //       msg: 'Hello from vue-loader'
+  //     }
+  //   },
+  //   components: {
+  //     Home
+  //   }
+  // }
 </script>
 
 <style lang="sass">

@@ -2,15 +2,15 @@
   <header class="site-header">
     <div class="site-header-container">
       <div class="logo">
-        <h1 class="text-logo"><a href="/">React Webpack</a></h1>
+        <h1 class="text-logo"><a v-link="{path: '/'}">React Webpack</a></h1>
       </div>
       <ul class="top-menu">
-        <li><a href="/">Home</a></li>
-        <li><a href="/page1">Page1</a></li>
-        <li><a href="/page2">Page2</a></li>
+        <li><a v-link="{path: '/'}">Home</a></li>
+        <li><a v-link="{path: '/page1'}">Page1</a></li>
+        <li><a v-link="{path: '/page2'}">Page2</a></li>
       </ul>
       <ul class="top-menu top-login">
-        <li><a href="/login">Login</a></li>
+        <li><a v-link="{path: '/login'}">Login</a></li>
       </ul>
     </div>
   </header>
