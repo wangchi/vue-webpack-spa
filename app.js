@@ -17,7 +17,10 @@ let App = Vue.extend({
     </div`
 });
 
-let router = new VueRouter();
+let router = new VueRouter({
+  // hashbang: false, // hashbang: 默认为true
+  history: true // history: 默认为false
+});
 
 router.map({
   '/': {
