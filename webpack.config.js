@@ -1,4 +1,5 @@
 module.exports = {
+  devtool: 'source-map',
   entry: [
     'webpack/hot/only-dev-server',
     './app.js'
