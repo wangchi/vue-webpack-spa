@@ -1,4 +1,4 @@
-import './styles/main.scss';
+import './styles/main.css';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
