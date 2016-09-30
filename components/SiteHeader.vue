@@ -2,7 +2,7 @@
   <header class="site-header">
     <div class="site-header-container">
       <div class="logo">
-        <h1 class="text-logo"><a v-link="{path: '/'}">React Webpack</a></h1>
+        <h1 class="text-logo"><a v-link="{path: '/'}">Vue Webpack</a></h1>
       </div>
       <ul class="top-menu">
         <li><a v-link="{path: '/'}">Home</a></li>
