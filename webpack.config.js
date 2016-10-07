@@ -1,3 +1,6 @@
+var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -23,8 +26,11 @@ module.exports = {
       test: /\.vue?$/,
       loader: 'vue'
     }, {
-      test: /\.scss?$/,
-      loader: 'style!css!sass'
+    //   test: /\.scss?$/,
+    //   loader: 'style!css!sass'
+    // }, {
+      test: /\.css?$/,
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
     }],
     vue: {
       loaders: {
@@ -34,5 +40,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.js', '.vue']
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('main.css')
+  ]
 };
