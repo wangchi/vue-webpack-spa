@@ -19,20 +19,18 @@ export default {
 }
 </script>
 
-<style lang="sass">
-  .site-footer {
-    width: 100%;
-    height: 500px;
-    background-color: #373D41;
-  }
+<style lang="stylus">
+  .site-footer
+    width 100%
+    height 500px
+    background-color #373D41
 
-  .site-footer-container {
-    margin: 0 auto;
-    width: 1200px;
-    background-color: #373D41;
+  .site-footer-container
+    margin 0 auto
+    width 1200px
+    background-color #373D41
 
-    line-height: 500px;
-    text-align: center;
-    font-size: 50px;
-  }
+    line-height 500px
+    text-align center
+    font-size 50px
 </style>

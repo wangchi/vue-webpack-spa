@@ -22,12 +22,10 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
   /* ---- page1 layout START ---- */
-  .content {
-    .page2.placeholder {
-      background-color: #666;
-    }
-  }
+  .content
+    .page2.placeholder
+      background-color #666
   /* ---- page1 layout END ---- */
 </style>

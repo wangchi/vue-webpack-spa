@@ -1,0 +1,8 @@
+/**
+ * 普通CSS样式
+ */
+
+.old-color-red {
+  font-style: italic;
+  color: red !important;
+}

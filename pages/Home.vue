@@ -2,7 +2,7 @@
   <site-header></site-header>
   <div class="content">
     <div class="placeholder">Home Content1</div>
-    <div class="placeholder">Home Content2</div>
+    <div class="placeholder old-color-red">Home Content2</div>
     <div class="placeholder">Home Content3</div>
   </div>
   <site-footer></site-footer>
@@ -24,10 +24,9 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
   /* ---- home layout START ---- */
-  .content {
-    color: #f00;
-  }
+  .content
+    color #f00
   /* ---- home layout END ---- */
 </style>

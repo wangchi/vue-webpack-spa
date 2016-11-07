@@ -22,15 +22,13 @@
   }
 </script>
 
-<style lang="sass">
+<style lang="stylus">
   /* ---- page1 layout START ---- */
-  .content {
-    .login.placeholder {
-      margin-left: auto;
-      margin-right: auto;
-      width: 600px;
-      background-color: #666;
-    }
-  }
+  .content
+    .login.placeholder
+      margin-left auto
+      margin-right auto
+      width 600px
+      background-color #666
   /* ---- page1 layout END ---- */
 </style>
