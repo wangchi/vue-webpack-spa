@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node ./server.js",
-    "dev": "webpack-dev-server --config ./webpack.dev.config.js --hot --progress --colors --display-error-details",
+    "dev": "webpack-dev-server --config ./webpack.dev.config.js --inline --hot --progress --colors --display-error-details",
     "build": "webpack --config ./webpack.prod.config.js --process ---colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -37,6 +37,7 @@
     "css-loader": "^0.25.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.24.1",
+    "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "vue": "^1.0.27",

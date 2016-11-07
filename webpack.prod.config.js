@@ -30,7 +30,7 @@ module.exports = {
       loader: 'vue'
     }, {
       test: /\.styl?$/,
-      loader: ExtractTextPlugin.extract('css-loader!stylus-loader')
+      loader: ExtractTextPlugin.extract('css!stylus')
     }],
     vue: {
       loaders: {
@@ -44,7 +44,10 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('static/build-[contenthash:8].css'),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
+      minify: {
+        collapseWhitespace: true
+      }
     }),
     new CleanWebpackPlugin(['dist'], {
       verbose: true

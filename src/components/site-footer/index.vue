@@ -11,14 +11,16 @@
 </template>
 
 <script>
-export default {
-  data () {
-    return {}
-  },
-  computed: {},
-  ready () {},
-  attached () {},
-  methods: {},
-  components: {}
-}
+  import './index.styl';
+
+  export default {
+    data () {
+      return {}
+    },
+    computed: {},
+    ready () {},
+    attached () {},
+    methods: {},
+    components: {}
+  }
 </script>
