@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=production node ./server.js",
-    "dev": "webpack-dev-server --config ./webpack.dev.config.js --hot --progress --colors --display-error-details",
+    "dev": "webpack-dev-server --config ./webpack.dev.config.js --inline --hot --progress --colors --display-error-details",
     "build": "webpack --config ./webpack.prod.config.js --process ---colors",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
