@@ -4,15 +4,21 @@
 
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
+
+var config = {
+  publicPath: 'http://127.0.0.1:3000/'
+};
 
 module.exports = {
   entry: [
-    './app.js'
+    './src/app.js'
   ],
   output: {
     path: './dist',
-    publicPath: 'dist/',
-    filename: 'build.js'
+    publicPath: config.publicPath,
+    filename: 'static/build-[chunkhash:8].js'
   },
   module: {
     loaders: [{
@@ -36,6 +42,24 @@ module.exports = {
     extensions: ['', '.js', '.vue']
   },
   plugins: [
-    new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('static/build-[contenthash:8].css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new CleanWebpackPlugin(['dist'], {
+      verbose: true
+    }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process_env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    })
   ]
 };

@@ -7,10 +7,10 @@ var path = require('path');
 var app = express();
 var port = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, './')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'index.html'));
+  res.sendFile(path.resolve(__dirname, 'dist/index.html'));
 });
 
 app.listen(port, function () {

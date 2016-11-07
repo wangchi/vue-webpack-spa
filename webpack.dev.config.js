@@ -4,16 +4,21 @@
 
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var config = {
+  publicPath: 'http://127.0.0.1:3001/'
+};
 
 module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack/hot/only-dev-server',
-    './app.js'
+    './src/app.js'
   ],
   output: {
     path: './dist',
-    publicPath: 'dist/',
+    publicPath: config.publicPath,
     filename: 'build.js'
   },
   devServer: {
@@ -43,6 +48,9 @@ module.exports = {
     extensions: ['', '.js', '.vue']
   },
   plugins: [
-    new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('build.css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    })
   ]
 };
