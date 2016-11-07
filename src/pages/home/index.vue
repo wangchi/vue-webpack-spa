@@ -9,8 +9,10 @@
 </template>
 
 <script>
-  import SiteHeader from '../components/SiteHeader';
-  import SiteFooter from '../components/SiteFooter';
+  import './index.styl';
+
+  import SiteHeader from '../../components/site-header';
+  import SiteFooter from '../../components/site-footer';
   export default {
     data: function () {
       return {
@@ -23,10 +25,3 @@
     }
   }
 </script>
-
-<style lang="stylus">
-  /* ---- home layout START ---- */
-  .content
-    color #f00
-  /* ---- home layout END ---- */
-</style>

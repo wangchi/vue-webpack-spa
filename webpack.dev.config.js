@@ -37,7 +37,8 @@ module.exports = {
       loader: 'vue'
     }, {
       test: /\.styl?$/,
-      loader: ExtractTextPlugin.extract('css-loader!stylus-loader')
+      // loader: 'style!css?sourceMap!stylus'
+      loader: 'style!css!stylus'
     }],
     vue: {
       loaders: {
@@ -49,7 +50,6 @@ module.exports = {
     extensions: ['', '.js', '.vue']
   },
   plugins: [
-    new ExtractTextPlugin('build.css'),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
