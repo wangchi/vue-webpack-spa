@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import SiteHeader from '../components/SiteHeader';
-  import SiteFooter from '../components/SiteFooter';
+  import SiteHeader from '../../components/site-header';
+  import SiteFooter from '../../components/site-footer';
   export default {
     data: function () {
       return {
@@ -21,11 +21,3 @@
     }
   }
 </script>
-
-<style lang="stylus">
-  /* ---- page1 layout START ---- */
-  .content
-    .page2.placeholder
-      background-color #666
-  /* ---- page1 layout END ---- */
-</style>

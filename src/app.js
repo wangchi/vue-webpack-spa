@@ -3,10 +3,10 @@ import './styles/main.styl';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from './pages/Home';
-import Page1 from './pages/Page1';
-import Page2 from './pages/Page2';
-import Login from './pages/Login';
+import Home from './pages/home';
+import Page1 from './pages/page1';
+import Page2 from './pages/page2';
+import Login from './pages/login';
 
 Vue.use(VueRouter);
 
