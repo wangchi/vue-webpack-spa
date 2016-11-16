@@ -4,6 +4,10 @@
     <div class="login placeholder">
       {{msg}}
       <sub></sub>
+      <div class="parent">
+        <input type="text" v-model="parentMessage">
+        <button @click="sendParentMessge">Parent, Broadcast</button>
+      </div>
     </div>
   </div>
   <site-footer></site-footer>
@@ -19,12 +23,17 @@
   export default {
     data: function () {
       return {
-        msg: 'Login'
+        msg: 'Login',
+        parentMessage: 'parent'
       }
     },
     methods: {
       print: function () {
         console.log('print fn');
+      },
+
+      sendParentMessge: function () {
+        this.$broadcast('parent-message', this.parentMessage);
       }
     },
     events: {

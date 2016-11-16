@@ -5,7 +5,7 @@
 <template lang="html">
   <div class="sub">
     <input type="text" v-model="msg">
-    <button @click="sendMessage">Sub, Dispatch</button>
+    <button @click="sendMessage">Child, Dispatch</button>
     <br>
     {{ subData }}
   </div>
@@ -27,6 +27,11 @@
     methods: {
       sendMessage: function () {
         this.$dispatch('send-message', this.msg);
+      }
+    },
+    events: {
+      'parent-message': function (data) {
+        this.subData = data;
       }
     },
     components: {}
