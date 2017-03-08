@@ -27,6 +27,11 @@ npm run dev
 
 Then open up [http://127.0.0.1:3001/](http://127.0.0.1:3001)
 
+vue1.x version:
+```
+git checkout vue-1.x
+```
+
 ## License
 
 [MIT LICENSE](./LICENSE)
