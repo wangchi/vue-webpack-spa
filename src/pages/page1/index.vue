@@ -1,9 +1,11 @@
 <template lang="html">
-  <site-header></site-header>
-  <div class="content">
-    <div class="page1 placeholder">Page1</div>
+  <div>
+    <site-header></site-header>
+    <div class="content">
+      <div class="page1 placeholder">Page1</div>
+    </div>
+    <site-footer></site-footer>
   </div>
-  <site-footer></site-footer>
 </template>
 
 <script>

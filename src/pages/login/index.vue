@@ -1,16 +1,18 @@
 <template lang="html">
-  <site-header></site-header>
-  <div class="content">
-    <div class="login placeholder">
-      {{msg}}
-      <sub></sub>
-      <div class="parent">
-        <input type="text" v-model="parentMessage">
-        <button @click="sendParentMessge">Parent, Broadcast</button>
+  <div>
+    <site-header></site-header>
+    <div class="content">
+      <div class="login placeholder">
+        {{msg}}
+        <sub-component></sub-component>
+        <div class="parent">
+          <input type="text" v-model="parentMessage">
+          <button @click="sendParentMessge">Parent, Broadcast</button>
+        </div>
       </div>
     </div>
+    <site-footer></site-footer>
   </div>
-  <site-footer></site-footer>
 </template>
 
 <script>
@@ -18,7 +20,7 @@
 
   import SiteHeader from '../../components/site-header';
   import SiteFooter from '../../components/site-footer';
-  import Sub from '../../components/sub';
+  import SubComponent from '../../components/sub';
 
   export default {
     data: function () {
@@ -46,7 +48,7 @@
     components: {
       SiteHeader,
       SiteFooter,
-      Sub
+      SubComponent
     }
   }
 </script>

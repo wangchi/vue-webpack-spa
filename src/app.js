@@ -10,31 +10,39 @@ import Login from './pages/login';
 
 Vue.use(VueRouter);
 
-let App = Vue.extend({
+const routes = [
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/page1',
+    component: Page1
+  },
+  {
+    path: '/page2',
+    component: Page2
+  },
+  {
+    path: '/login',
+    component: Login
+  },
+  {
+    path: '*',
+    redirect: '/'
+  }
+];
+
+let router = new VueRouter({
+  // 默认为 hash
+  mode: 'history',
+  routes
+});
+
+const app = new Vue({
+  router,
   template: `
     <div>
       <router-view></router-view>
-    </div`
-});
-
-let router = new VueRouter({
-  // hashbang: false, // hashbang: 默认为true
-  history: true // history: 默认为false
-});
-
-router.map({
-  '/': {
-    component: Home
-  },
-  '/page1': {
-    component: Page1
-  },
-  '/page2': {
-    component: Page2
-  },
-  '/login': {
-    component: Login
-  }
-});
-
-router.start(App, '#app');
+    </div>`
+}).$mount('#app');

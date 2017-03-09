@@ -6,15 +6,17 @@
   <header class="site-header">
     <div class="site-header-container">
       <div class="logo">
-        <h1 class="text-logo"><a v-link="{path: '/'}">Vue Webpack</a></h1>
+        <h1 class="text-logo">
+          <router-link :to="{ path: '/' }">Vue Webpack</router-link>
+        </h1>
       </div>
       <ul class="top-menu">
-        <li><a v-link="{path: '/'}">Home</a></li>
-        <li><a v-link="{path: '/page1'}">Page1</a></li>
-        <li><a v-link="{path: '/page2'}">Page2</a></li>
+        <li><router-link :to="{ path: '/' }">Home</router-link></li>
+        <li><router-link :to="{ path: '/page1' }">Page1</router-link></li>
+        <li><router-link :to="{ path: '/page2' }">Page2</router-link></li>
       </ul>
       <ul class="top-menu top-login">
-        <li><a v-link="{path: '/login'}">Login</a></li>
+        <li><router-link :to="{ path: '/login' }">Login</router-link></li>
       </ul>
     </div>
   </header>

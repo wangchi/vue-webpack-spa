@@ -47,7 +47,10 @@ module.exports = {
     }
   },
   resolve: {
-    extensions: ['', '.js', '.vue']
+    extensions: ['', '.js', '.vue'],
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
