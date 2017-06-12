@@ -3,6 +3,7 @@
  */
 
 var webpack = require('webpack');
+var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -16,41 +17,56 @@ module.exports = {
     './src/app.js'
   ],
   output: {
-    path: './dist',
+    path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
-    filename: 'static/build-[chunkhash:8].js'
+    filename: 'static/[name].[chunkhash:8].js'
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/
     }, {
       test: /\.vue?$/,
-      loader: 'vue'
+      loader: 'vue-loader',
+      options: {
+        loaders: {
+          css: 'vue-style-loader!css-loader',
+          stylus: 'vue-style-loader!css-loader!stylus-loader'
+        },
+        postLoaders: {
+          html: 'babel-loader'
+        }
+      }
     }, {
       test: /\.styl?$/,
-      loader: ExtractTextPlugin.extract('css!stylus')
-    }],
-    vue: {
-      loaders: {
-        js: 'babel'
-      }
-    }
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [{
+          loader: 'css-loader',
+          options: {
+            minimize: true
+          }
+        }, {
+          loader: 'stylus-loader'
+        }]
+      })
+    }]
   },
   resolve: {
-    extensions: ['', '.js', '.vue']
+    extensions: ['.js', '.vue'],
+    alias: {
+      vue: 'vue/dist/vue.min.js'
+    }
   },
   plugins: [
-    new ExtractTextPlugin('static/build-[contenthash:8].css'),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      minify: {
-        collapseWhitespace: true
-      }
-    }),
     new CleanWebpackPlugin(['dist'], {
       verbose: true
+    }),
+    new webpack.DefinePlugin({
+      'process_env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -59,9 +75,11 @@ module.exports = {
         screw_ie8: true
       }
     }),
-    new webpack.DefinePlugin({
-      'process_env': {
-        NODE_ENV: JSON.stringify('production')
+    new ExtractTextPlugin('static/[name].[contenthash:8].css'),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      minify: {
+        collapseWhitespace: true
       }
     })
   ]

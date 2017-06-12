@@ -3,6 +3,7 @@
  */
 
 var webpack = require('webpack');
+var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,7 +18,7 @@ module.exports = {
     './src/app.js'
   ],
   output: {
-    path: './dist',
+    path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
     filename: 'build.js'
   },
@@ -28,26 +29,29 @@ module.exports = {
     historyApiFallback: true
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /node_modules/
     }, {
       test: /\.vue?$/,
-      loader: 'vue'
+      loader: 'vue-loader',
+      options: {
+        loaders: {
+          css: 'vue-style-loader!css-loader',
+          stylus: 'vue-style-loader!css-loader!stylus-loader'
+        },
+        postLoaders: {
+          html: 'babel-loader'
+        }
+      }
     }, {
       test: /\.styl?$/,
-      // loader: 'style!css?sourceMap!stylus'
-      loader: 'style!css!stylus'
-    }],
-    vue: {
-      loaders: {
-        js: 'babel'
-      }
-    }
+      use: ['style-loader', 'css-loader', 'stylus-loader']
+    }]
   },
   resolve: {
-    extensions: ['', '.js', '.vue'],
+    extensions: ['.js', '.vue'],
     alias: {
       vue: 'vue/dist/vue.js'
     }
