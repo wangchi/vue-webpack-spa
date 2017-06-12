@@ -16,7 +16,8 @@
         <li><router-link :to="{ path: '/page2' }">Page2</router-link></li>
       </ul>
       <ul class="top-menu top-login">
-        <li><router-link :to="{ path: '/login' }">Login</router-link></li>
+        <!-- you can also use name -->
+        <li><router-link :to="{ name: 'login' }">Login</router-link></li>
       </ul>
     </div>
   </header>
