@@ -2,12 +2,10 @@
  * Webpack Development Config
  */
 
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var config = {
+const config = {
   publicPath: 'http://127.0.0.1:3001/'
 };
 

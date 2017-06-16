@@ -2,13 +2,13 @@
  * Webpack Production Config
  */
 
-var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-var config = {
+const config = {
   publicPath: 'http://127.0.0.1:3000/'
 };
 
@@ -64,7 +64,7 @@ module.exports = {
       verbose: true
     }),
     new webpack.DefinePlugin({
-      'process_env': {
+      process_env: {
         NODE_ENV: JSON.stringify('production')
       }
     }),

@@ -2,17 +2,18 @@
  * Vue Webpack SPA server
  */
 
-var express = require('express');
-var path = require('path');
-var app = express();
-var port = process.env.PORT || 3000;
+import express from 'express';
+import path from 'path';
+
+const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, './dist')));
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'dist/index.html'));
 });
 
-app.listen(port, function () {
+app.listen(port, () => {
   console.info('Listening on port %s, Open up http://127.0.0.1:%s/ in your browser.', port, port);
 });
