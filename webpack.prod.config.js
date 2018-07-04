@@ -2,85 +2,94 @@
  * Webpack Production Config
  */
 
-const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
   publicPath: 'http://127.0.0.1:3000/'
 };
 
 module.exports = {
-  entry: [
-    './src/app.js'
-  ],
+  entry: {
+    vendor: ['vue', 'vue-router', 'vuex'],
+    client: './src/app.js'
+  },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
-    filename: 'static/[name].[chunkhash:8].js'
+    filename: 'static/[name].[chunkhash:8].bundle.js',
+    chunkFilename: 'static/[name].[chunkhash:8].bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.js?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.vue?$/,
-      loader: 'vue-loader',
-      options: {
-        loaders: {
-          css: 'vue-style-loader!css-loader',
-          stylus: 'vue-style-loader!css-loader!stylus-loader'
-        },
-        postLoaders: {
-          html: 'babel-loader'
+    rules: [
+      {
+        test: /\.js?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.vue?$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.styl?$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'stylus-loader'
+        ]
+      }
+    ]
+  },
+  mode: 'production',
+  resolve: {
+    extensions: ['*', '.js', '.vue', '.json'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js'
+    }
+  },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false
+      }),
+      new OptimizeCssAssetsPlugin()
+    ],
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          name: 'vendor',
+          test: 'vendor',
+          enforce: true
         }
       }
-    }, {
-      test: /\.styl?$/,
-      use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          options: {
-            minimize: true
-          }
-        }, {
-          loader: 'stylus-loader'
-        }]
-      })
-    }]
-  },
-  resolve: {
-    extensions: ['.js', '.vue'],
-    alias: {
-      vue: 'vue/dist/vue.min.js'
+    },
+    runtimeChunk: {
+      name: 'runtime'
     }
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
       verbose: true
     }),
-    new webpack.DefinePlugin({
-      process_env: {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
-        screw_ie8: true
-      }
-    }),
-    new ExtractTextPlugin('static/[name].[contenthash:8].css'),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/assets/index.html',
       minify: {
         collapseWhitespace: true
       }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'static/[name].[contenthash:8].bundle.css',
+      chunkFilename: 'static/[name].[contenthash:8].bundle.css'
     })
   ]
 };

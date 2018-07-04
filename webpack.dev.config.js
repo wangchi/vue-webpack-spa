@@ -4,6 +4,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
   publicPath: 'http://127.0.0.1:3001/'
@@ -11,52 +12,47 @@ const config = {
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    'webpack/hot/only-dev-server',
-    './src/app.js'
-  ],
+  entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
     filename: 'build.js'
   },
   devServer: {
+    open: false,
     port: 3001,
     inline: true,
     hot: true,
     historyApiFallback: true
   },
   module: {
-    rules: [{
-      test: /\.js?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/
-    }, {
-      test: /\.vue?$/,
-      loader: 'vue-loader',
-      options: {
-        loaders: {
-          css: 'vue-style-loader!css-loader',
-          stylus: 'vue-style-loader!css-loader!stylus-loader'
-        },
-        postLoaders: {
-          html: 'babel-loader'
-        }
+    rules: [
+      {
+        test: /\.js?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.vue?$/,
+        loader: 'vue-loader'
+      },
+      {
+        test: /\.styl?$/,
+        use: ['vue-style-loader', 'css-loader', 'stylus-loader']
       }
-    }, {
-      test: /\.styl?$/,
-      use: ['style-loader', 'css-loader', 'stylus-loader']
-    }]
+    ]
   },
+  mode: 'development',
   resolve: {
-    extensions: ['.js', '.vue'],
+    extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      vue: 'vue/dist/vue.js'
+      vue$: 'vue/dist/vue.esm.js'
     }
   },
   plugins: [
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/assets/index.html'
     })
   ]
 };

@@ -8,18 +8,21 @@ import stores from './store';
 
 import './styles/main.styl';
 
+// import App from './App.vue';
+
 Vue.use(Vuex);
 Vue.use(VueRouter);
 
 const store = new Vuex.Store(stores);
 
 const router = new VueRouter({
-  // 默认为 hash
-  mode: 'history',
+  // hash | history，默认为 hash
+  mode: 'hash',
   routes
 });
 
 new Vue({
   router,
   store
+  // render: h => h(App)
 }).$mount('#app');
