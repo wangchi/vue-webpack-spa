@@ -1,16 +1,18 @@
 {
   "root": true,
+  "parser": "vue-eslint-parser",
   "extends": [
     "eslint:recommended",
     "plugin:vue/strongly-recommended"
   ],
   "plugins": ["vue"],
   "parserOptions": {
-    "ecmaVersion": 8,
+    "ecmaVersion": 9,
     "ecmaFeatures": {
       "jsx": true
     },
-    "sourceType": "module"
+    "sourceType": "module",
+    "parser": "babel-eslint"
   },
   "rules": {
     "indent": ["error", 2],
@@ -20,7 +22,17 @@
     "no-const-assign": ["error"],
     "no-empty": ["error"],
     "no-use-before-define": ["error"],
-    "no-console": ["off"]
+    "no-console": ["off"],
+    "vue/singleline-html-element-content-newline": ["off"],
+    "vue/max-attributes-per-line": [4,
+      {
+        "singleline": 4,
+        "multiline": {
+          "max": 1,
+          "allowFirstLine": true
+        }
+      }
+    ]
   },
   "env": {
     "node": true,

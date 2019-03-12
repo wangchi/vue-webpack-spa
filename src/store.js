@@ -8,7 +8,7 @@ export default {
   },
 
   actions: {
-    setMessage ({ commit, state }, data) {
+    setMessage ({ commit }, data) {
       commit('setMessage', data);
     }
   },

@@ -24,16 +24,16 @@
 </template>
 
 <script>
-  import './index.styl';
+import './index.styl';
 
-  export default {
-    data () {
-      return {}
-    },
-    computed: {},
-    ready () {},
-    attached () {},
-    methods: {},
-    components: {}
-  }
+export default {
+  data () {
+    return {};
+  },
+  computed: {},
+  ready () {},
+  attached () {},
+  methods: {},
+  components: {}
+};
 </script>

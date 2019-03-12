@@ -8,7 +8,7 @@ import stores from './store';
 
 import './styles/main.styl';
 
-// import App from './App.vue';
+import App from './App.vue';
 
 Vue.use(Vuex);
 Vue.use(VueRouter);
@@ -22,7 +22,9 @@ const router = new VueRouter({
 });
 
 new Vue({
+  el: '#app',
   router,
-  store
-  // render: h => h(App)
-}).$mount('#app');
+  store,
+  render: h => h(App)
+});
+// }).$mount('#app');
