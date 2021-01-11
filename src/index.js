@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
@@ -18,13 +17,13 @@ const store = new Vuex.Store(stores);
 const router = new VueRouter({
   // hash | history，默认为 hash
   mode: 'hash',
-  routes
+  routes,
 });
 
 new Vue({
   el: '#app',
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 });
 // }).$mount('#app');

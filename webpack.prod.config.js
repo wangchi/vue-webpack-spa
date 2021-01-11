@@ -5,62 +5,64 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
-  publicPath: 'http://127.0.0.1:3000/'
+  publicPath: 'http://127.0.0.1:3000/',
 };
 
 module.exports = {
   entry: {
     vendor: ['vue', 'vue-router', 'vuex'],
-    client: './src/app.js'
+    client: './src/index.js',
   },
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
     filename: 'static/[name].[chunkhash:8].bundle.js',
-    chunkFilename: 'static/[name].[chunkhash:8].bundle.js'
+    chunkFilename: 'static/[name].[chunkhash:8].bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.js?$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.vue?$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.styl?$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'stylus-loader'
-        ]
-      }
-    ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader'],
+      },
+    ],
   },
   mode: 'production',
   resolve: {
     extensions: ['*', '.js', '.vue', '.json'],
     alias: {
-      vue$: 'vue/dist/vue.esm.js'
-    }
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false
+      new CssMinimizerPlugin(),
+      new TerserPlugin({
+        sourceMap: false,
+        terserOptions: {
+          output: {
+            comments: false,
+          },
+        },
+        extractComments: false,
       }),
-      new OptimizeCssAssetsPlugin()
     ],
     splitChunks: {
       cacheGroups: {
@@ -68,28 +70,28 @@ module.exports = {
           chunks: 'all',
           name: 'vendor',
           test: 'vendor',
-          enforce: true
-        }
-      }
+          enforce: true,
+        },
+      },
     },
     runtimeChunk: {
-      name: 'runtime'
-    }
+      name: 'runtime',
+    },
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
-      verbose: true
+      verbose: true,
     }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: './src/assets/index.html',
       minify: {
-        collapseWhitespace: true
-      }
+        collapseWhitespace: true,
+      },
     }),
     new MiniCssExtractPlugin({
       filename: 'static/[name].[contenthash:8].bundle.css',
-      chunkFilename: 'static/[name].[contenthash:8].bundle.css'
-    })
-  ]
+      chunkFilename: 'static/[name].[contenthash:8].bundle.css',
+    }),
+  ],
 };

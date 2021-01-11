@@ -15,5 +15,9 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.info('Listening on port %s, Open up http://127.0.0.1:%s/ in your browser.', port, port);
+  console.info(
+    'Listening on port %s, Open up http://127.0.0.1:%s/ in your browser.',
+    port,
+    port
+  );
 });
