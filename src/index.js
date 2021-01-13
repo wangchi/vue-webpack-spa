@@ -16,14 +16,13 @@ const store = new Vuex.Store(stores);
 
 const router = new VueRouter({
   // hash | history，默认为 hash
-  mode: 'hash',
+  mode: 'history',
   routes,
 });
 
 new Vue({
-  el: '#app',
+  // el: '#app',
   router,
   store,
   render: (h) => h(App),
-});
-// }).$mount('#app');
+}).$mount('#app');

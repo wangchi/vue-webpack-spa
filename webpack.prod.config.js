@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 const config = {
@@ -30,23 +30,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
       {
-        test: /\.vue?$/,
+        test: /\.vue$/,
         loader: 'vue-loader',
       },
       {
-        test: /\.styl?$/,
+        test: /\.styl(us)?$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'stylus-loader'],
       },
     ],
   },
   mode: 'production',
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
     },
@@ -55,7 +55,6 @@ module.exports = {
     minimizer: [
       new CssMinimizerPlugin(),
       new TerserPlugin({
-        sourceMap: false,
         terserOptions: {
           output: {
             comments: false,
@@ -79,7 +78,7 @@ module.exports = {
     },
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
+    new CleanWebpackPlugin({
       verbose: true,
     }),
     new VueLoaderPlugin(),

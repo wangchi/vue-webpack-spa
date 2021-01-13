@@ -10,25 +10,25 @@ import Home from './pages/home';
 const routes = [
   {
     path: '/',
-    component: Home
+    component: Home,
   },
   {
     path: '/page1',
-    component: () => import('./pages/page1')
+    component: () => import('./pages/page1'),
   },
   {
     path: '/page2',
-    component: () => import('./pages/page2')
+    component: () => import('./pages/page2'),
   },
   {
     path: '/login',
     name: 'login',
-    component: () => import('./pages/login')
+    component: () => import('./pages/login'),
   },
   {
     path: '*',
-    redirect: '/'
-  }
+    redirect: '/',
+  },
 ];
 
 export default routes;

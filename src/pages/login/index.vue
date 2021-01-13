@@ -12,8 +12,8 @@ import './index.styl';
 export default {
   data() {
     return {
-      msg: 'Login'
+      msg: 'Login',
     };
-  }
+  },
 };
 </script>

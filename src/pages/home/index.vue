@@ -5,39 +5,36 @@
     <div class="placeholder">Home Content3</div>
     <div class="placeholder">
       {{ message }}
-      <input
-        type="text"
-        :value="message"
-        @change="handleMessageChange"
-      >
+      <input type="text" :value="message" @change="handleMessageChange" />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import './index.styl';
 
 export default {
   computed: {
-    ...mapGetters([
-      'message'
-    ])
+    ...mapGetters(['message']),
   },
 
   data() {
     return {
-      msg: 'Home'
+      msg: 'Home',
     };
   },
   mounted() {
     console.log('mounted');
   },
   methods: {
-    handleMessageChange (e) {
+    handleMessageChange(e) {
       console.log(e.target.value);
       this.$store.dispatch('setMessage', e.target.value);
-    }
-  }
+    },
+  },
 };
 </script>
+<style lang="stylus" scoped>
+.content
+  color #f00
+</style>

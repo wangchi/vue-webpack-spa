@@ -1,12 +1,6 @@
-/**
- * Site Footer
- */
-
 <template lang="html">
   <div class="site-footer">
-    <div class="site-footer-container">
-      Footer
-    </div>
+    <div class="site-footer-container">Footer</div>
   </div>
 </template>
 
@@ -14,13 +8,13 @@
 import './index.styl';
 
 export default {
-  data () {
+  data() {
     return {};
   },
   computed: {},
-  ready () {},
-  attached () {},
+  ready() {},
+  attached() {},
   methods: {},
-  components: {}
+  components: {},
 };
 </script>

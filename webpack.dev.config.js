@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: config.publicPath,
-    filename: 'build.js',
+    filename: 'bundle.js',
   },
   devServer: {
     open: false,
@@ -35,18 +35,33 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        options: {
+          compilerOptions: {
+            preserveWhitespace: false,
+          },
+        },
       },
       {
-        test: /\.styl$/,
-        use: ['style-loader', 'css-loader', 'stylus-loader'],
+        test: /\.styl(us)?$/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              esModule: false,
+            },
+          },
+          'stylus-loader',
+        ],
       },
     ],
   },
   mode: 'development',
   resolve: {
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve('src'),
     },
   },
   plugins: [

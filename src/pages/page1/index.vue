@@ -10,8 +10,8 @@ import './index.styl';
 export default {
   data() {
     return {
-      msg: 'Home'
+      msg: 'Home',
     };
-  }
+  },
 };
 </script>

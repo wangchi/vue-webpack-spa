@@ -1,13 +1,9 @@
-/**
- * Site Header
- */
-
 <template lang="html">
   <header class="site-header">
     <div class="site-header-container">
       <div class="logo">
         <h1 class="text-logo">
-          <router-link :to="{ path: '/' }">Vue Webpack</router-link>
+          <router-link :to="{ path: '/' }">Vue Webpack Starter</router-link>
         </h1>
       </div>
       <ul class="top-menu">
@@ -27,13 +23,13 @@
 import './index.styl';
 
 export default {
-  data () {
+  data() {
     return {};
   },
   computed: {},
-  ready () {},
-  attached () {},
+  ready() {},
+  attached() {},
   methods: {},
-  components: {}
+  components: {},
 };
 </script>

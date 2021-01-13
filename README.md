@@ -4,10 +4,9 @@ Single page application with Vue, Vue-Router, Vuex and Webpack.
 
 ## Technology stacks
 
-- Vue `latest`
-- Vue Router `latest`
-- Vuex `latest`
-- Webpack `latest`
+- Vue `2.x`
+- Webpack `5.x`
+- Babel `7.x`
 
 ## Features
 
@@ -20,14 +19,14 @@ Single page application with Vue, Vue-Router, Vuex and Webpack.
 Clone the repository and install dependencies.
 
 ```bash
-npm install
+yarn
 ```
 
-Compile ES6, Vue and Sass, and run a simple node server.
+Compile ES6, Vue and Stylus, and run a simple node server.
 
 ```bash
-npm run build
-npm run server
+yarn build
+yarn serve
 ```
 
 Then visit the demo: [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
@@ -35,7 +34,7 @@ Then visit the demo: [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
 For development, you can run a webpack dev server.
 
 ```bash
-npm start
+yarn dev
 ```
 
 Then open up [http://127.0.0.1:3001/](http://127.0.0.1:3001)

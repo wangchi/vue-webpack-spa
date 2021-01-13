@@ -6,18 +6,18 @@
   "scripts": {
     "dev": "webpack serve --config ./webpack.dev.config.js --inline --hot --progress",
     "build": "webpack --config ./webpack.prod.config.js",
-    "server": "serve ./dist -p 3000",
-    "server_bak": "NODE_ENV=production babel-node ./server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "NODE_ENV=production node ./server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wangchi/vue-webpack-starter.git"
   },
   "keywords": [
-    "Vue",
-    "Webpack",
-    "SPA"
+    "vue",
+    "webpack",
+    "webpack5",
+    "vue boilerplate",
+    "webpack boilerplate"
   ],
   "author": "Wang Chi <hiwangchi@gmail.com>",
   "license": "MIT",
@@ -57,7 +57,6 @@
     "html-webpack-plugin": "^4.5.1",
     "mini-css-extract-plugin": "^1.3.3",
     "prettier": "^2.2.1",
-    "serve": "^11.3.2",
     "style-loader": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.3.2",

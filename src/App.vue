@@ -9,20 +9,19 @@
 </template>
 
 <script>
-
 import SiteHeader from './components/site-header';
 import SiteFooter from './components/site-footer';
 
 export default {
   data() {
     return {
-      transitionName: ''
+      transitionName: '',
     };
   },
 
   components: {
     SiteHeader,
-    SiteFooter
-  }
+    SiteFooter,
+  },
 };
 </script>
